@@ -60,7 +60,7 @@
       cursor: pointer;
 }
 </style>
-<button onclick="document.location=('/generator/index.html')" id="index-button">Back to Password Generator</button>
+<button onclick="document.location=('https://freeutka2022.github.io/generator/')" id="index-button">Back to Password Generator</button>
 <form id="login-form" style="margin: auto; width: 45%; margin-top: 230px;">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username">
@@ -94,7 +94,7 @@ document.cookie = "isLoggedIn=" + accounts[i].username + ";" + expires + ";path=
 
         // show logout button
         document.getElementById("logout-button").style.display = "block";
-        window.location.href = "/generator/index.html";
+        window.location.href = "https://freeutka2022.github.io/generator/";
         return;
       }
     }
