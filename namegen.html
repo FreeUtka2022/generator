@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Name Generator</title>
+  <style>
+    /* Dark theme styling */
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+
+    button {
+      background-color: #6272a4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    #index-button {
+      position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #6272a4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+}
+  </style>
+</head>
+<body>
+  <h1>Name Generator</h1>
+  <button onclick="document.location=('index.html')" id="index-button">Back to Password Generator</button>
+  <button id="button" onclick="generateName()">Generate Name</button>
+  <p id="generated-name"></p>
+
+  <script>
+    function generateName() {
+      var firstName = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Henry", "Isabella", "Jack", "Karen", "Liam", "Megan", "Nathan", "Olivia", "Peter", "Quinn", "Ryan", "Sophie", "Thomas", "Uma", "Victor", "Wendy", "Xavier", "Yasmin", "Zachary"];
+      var lastName = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Young", "Allen", "King", "Wright", "Scott", "Green", "Baker", "Adams", "Nelson", "Carter", "Mitchell", "Perez", "Roberts", "Turner", "Phillips", "Campbell", "Parker", "Evans", "Edwards", "Stewart", "Flores", "Morris", "Nguyen", "Murphy", "Rivera", "Cook", "Rogers", "Morgan", "Peterson", "Cooper", "Reed", "Bailey", "Bell", "Gomez", "Kelly", "Howard", "Ward", "Cox", "Diaz", "Richardson", "Wood", "Watson", "Brooks", "Bennett", "Gray", "James", "Reyes", "Cruz", "Hughes", "Price", "Myers", "Long", "Foster", "Sanders", "Ross", "Morales", "Powell", "Sullivan", "Russell", "Ortiz", "Jenkins", "Gutierrez", "Perry", "Butler", "Barnes", "Fisher", "Henderson", "Coleman", "Simmons", "Patterson", "Jordan", "Marshall", "Watts", "Blake", "Bowen", "Daniel", "Barber", "Cummings", "Hines", "Baldwin", "Griffith", "Valdez", "Hubbard", "Salazar", "Reeves", "Warner", "Stevenson", "Burgess", "Santos", "Tate", "Cross", "Garner", "Mann", "Mack", "Moss", "Thornton", "Dennis", "McGee", "Farmer", "Delgado", "Aguilar", "Vega", "Glover", "Manning", "Cohen", "Harmon", "Rodgers", "Robbins", "Newton", "Todd", "Blair", "Higgins", "Ingram", "Reese", "Cannon", "Strickland", "Townsend", "Potter", "Goodwin", "Walton", "Rowe", "Hampton", "Ortega", "Patton", "Swanson", "Joseph", "Francis", "Goodman", "Maldonado", "Yates", "Becker", "Erickson", "Hodges", "Rios", "Conner", "Adkins", "Webster"];
+
+      var randomFirst = firstName[Math.floor(Math.random() * firstName.length)];
+      var randomLast = lastName[Math.floor(Math.random() * lastName.length)];
+
+      var generatedName = randomFirst + " " + randomLast;
+
+      document.getElementById("generated-name").innerHTML = "Name: " + generatedName;
+    }
+  </script>
+</body>
+</html>

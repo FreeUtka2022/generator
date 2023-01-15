@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Link Generator</title>
+  <style>
+    /* Some basic styling */
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+    form {
+      margin: 0 auto;
+      width: 50%;
+    }
+    input[type="text"] {
+      background-color: #44475a;
+      color: white;
+      border: none;
+      padding: 8px;
+      width: 100%;
+    }
+    button {
+      background-color: #6272a4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    #index-button {
+      position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #6272a4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+}
+  </style>
+</head>
+<body>
+
+  <script>
+    function generateLink() {
+      var baseURL = document.getElementById("base-url").value;
+      var randomString = Math.random().toString(36).substring(2, 8);
+      var randomLink = baseURL + "/" + randomString;
+      document.getElementById("random-link").value = randomLink;
+    }
+
+function generateLink() {
+var link = "https://" + Math.random().toString(36).substring(2, 15) + ".com";
+document.getElementById("link").value = link;
+}
+</script>
+
+</head>
+<body>
+  <h1>Random Link Generator</h1>
+  <button onclick="document.location=('index.html')" id="index-button">Back to Password Generator</button>
+  <form>
+    <label for="link">Generated Link:</label>
+    <input type="text" id="link" disabled>
+    <br><br>
+    <button type="button" onclick="generateLink()">Generate Link</button>
+  </form>
+</body>
+</html>

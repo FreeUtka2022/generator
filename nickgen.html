@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nickname Generator</title>
+  <style>
+    /* Dark theme styling */
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+    input {
+      background-color: #44475a;
+      color: white;
+      border: none;
+      padding: 8px;
+    }
+    button {
+      background-color: #6272a4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    #index-button {
+      position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #6272a4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+}
+  </style>
+</head>
+<body>
+  <h1>Nickname Generator</h1>
+  <button onclick="document.location=('index.html')" id="index-button">Back to Password Generator</button>
+  <input type="text" id="name" placeholder="Enter your name"></input>
+  <button onclick="generateNickname()">Generate Nickname</button>
+  <p id="nickname"></p>
+
+  <script>
+    function generateNickname() {
+  var name = document.getElementById("name").value; // get the name from the input field
+  var nickname = ""; // initialize the nickname variable
+  
+  // generate the nickname
+  if (name.length <= 3) {
+    nickname = name;
+  } else if (name.length > 3 && name.length <= 6) {
+    nickname = name.slice(0, 3);
+  } else {
+    nickname = name.slice(0, 4);
+  }
+  
+  // display the nickname
+  document.getElementById("nickname").innerHTML = "Nickname: " + nickname;
+}
+  </script>
+</body>
+</html>

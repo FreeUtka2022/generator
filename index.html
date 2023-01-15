@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Password Generator</title>
+  <style>
+    /* Dark theme styling */
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+    input[type="text"], input[type="number"] {
+      background-color: #44475a;
+      color: white;
+      border: none;
+      padding: 8px;
+    }
+    input[type="checkbox"] {
+      -webkit-appearance: none;
+      background-color: #44475a;
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: none;
+      position: relative;
+    }
+    input[type="checkbox"]:checked::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      background-color: white;
+      top: 5px;
+      left: 5px;
+    }
+    button {
+      background-color: #6272a4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    #nickgen-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#namegen-button {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+}
+
+#linkshort-button {
+  position: absolute;
+  top: 90px;
+  right: 10px;
+}
+
+#rand-button {
+  position: absolute;
+  top: 130px;
+  right: 10px;
+}
+
+#raw-button {
+  position: absolute;
+  top: 170px;
+  right: 10px;
+}
+
+#trans-button {
+  position: absolute;
+  top: 210px;
+  right: 10px;
+}
+</style>
+</head>
+<body>
+  <h1>Password Generator</h1>
+  <button onclick="document.location=('nickgen.html')" id="nickgen-button">Open Nickname Generator</button>
+  <button onclick="document.location=('namegen.html')" id="namegen-button">Open Name Generator</button>
+  <button onclick="document.location=('shortlink.html')" id="linkshort-button">Open URL Shortener</button>
+  <button onclick="document.location=('randlink.html')" id="rand-button">Open Random URL Generator</button>
+  <button onclick="document.location=('raw.html')" id="raw-button">Open Raw Text Generator</button>
+  <button onclick="document.location=('trans.html')" id="trans-button">Open Text Translator</button>
+  <form>
+    <label for="length">Number of characters:</label>
+    <input type="number" id="length" min="8" max="64" value="8">
+    <br>
+    <input type="checkbox" id="uppercase">
+    <label for="uppercase">Include uppercase letters</label>
+    <br>
+    <input type="checkbox" id="numbers">
+    <label for="numbers">Include numbers</label>
+    <br>
+    <input type="checkbox" id="special">
+    <label for="special">Include special characters</label>
+    <br><br>
+    <button type="button" onclick="generate()">Generate Password</button>
+    <br><br>
+    <label for="password">Password:</label>
+    <input type="text" id="password" disabled>
+  </form>
+  <script>
+    function generate() {
+      var length = document.getElementById("length").value;
+      var includeUppercase = document.getElementById("uppercase").checked;
+      var includeNumbers = document.getElementById("numbers").checked;
+      var includeSpecial = document.getElementById("special").checked;
+      
+      var password = "";
+      var characters = "abcdefghijklmnopqrstuvwxyz";
+      
+      if (includeUppercase) {
+        characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      }
+      if (includeNumbers) {
+        characters += "0123456789";
+      }
+      if (includeSpecial) {
+        characters += "!@#$%^&*()_+-=[]{}|;':\"<>,.?/\\";
+      }
+      
+      for (var i = 0; i < length; i++) {
+        password += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      
+      document.getElementById("password").value = password;
+    }
+  </script>
+</body>
+</html>
