@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Password Generator</title>
+  <link rel="icon" type="/icon.png">
+  <style>
+    /* Dark theme styling */
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+    input[type="text"], input[type="number"] {
+      background-color: #44475a;
+      color: white;
+      border: none;
+      padding: 8px;
+    }
+    input[type="checkbox"] {
+      -webkit-appearance: none;
+      background-color: #44475a;
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      border: none;
+      position: relative;
+    }
+    input[type="checkbox"]:checked::before {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      background-color: white;
+      top: 5px;
+      left: 5px;
+    }
+    button {
+      background-color: #6272a4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    #nickgen-button {
+  position: absolute;
+  top: 55px;
+  right: 10px;
+}
+
+#namegen-button {
+  position: absolute;
+  top: 95px;
+  right: 10px;
+}
+
+#linkshort-button {
+  position: absolute;
+  top: 135px;
+  right: 10px;
+}
+
+#rand-button {
+  position: absolute;
+  top: 175px;
+  right: 10px;
+}
+
+#raw-button {
+  position: absolute;
+  top: 215px;
+  right: 10px;
+}
+
+#trans-button {
+  position: absolute;
+  top: 255px;
+  right: 10px;
+}
+
+#txt-button {
+  position: absolute;
+  top: 320px;
+  right: 10px;
+}
+
+#please-login {
+  position: absolute;
+  top: 320px;
+  right: 10px;
+  font-weight: bold;
+}
+
+.beta-container {
+position: absolute;
+top: 280px;
+right: 10px;
+}
+
+.beta-label {
+font-weight: bold;
+}
+
+.beta-line {
+width: 250px;
+height: 2px;
+background-color: #6272a4;
+margin-top: 10px;
+}
+
+.beta-container1 {
+position: absolute;
+top: 15px;
+right: 10px;
+}
+
+.beta-label1 {
+font-weight: bold;
+}
+
+.beta-line1 {
+width: 250px;
+height: 2px;
+background-color: #6272a4;
+margin-top: 10px;
+}
+
+#loginButton {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+#SignUpButton {
+  position: absolute;
+  bottom: 10px;
+  left: 100px;
+}
+
+
+#logoutButton {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+#loginText {
+position: absolute;
+bottom: 10px;
+left: 95px;
+font-weight: bold;
+font-size: 24px;
+}
+</style>
+</head>
+<body>
+  <h1>Password Generator</h1>
+  <div class="beta-container1">
+    <span class="beta-label1">Main</span>
+    <div class="beta-line1"></div>
+  </div>
+  <button onclick="document.location=('nickgen.html')" id="nickgen-button">Open Nickname Generator</button>
+  <button onclick="document.location=('namegen.html')" id="namegen-button">Open Name Generator</button>
+  <button onclick="document.location=('shortlink.html')" id="linkshort-button">Open URL Shortener</button>
+  <button onclick="document.location=('randlink.html')" id="rand-button">Open Random URL Generator</button>
+  <button onclick="document.location=('raw.html')" id="raw-button">Open Raw Text Generator</button>
+  <button onclick="document.location=('trans.html')" id="trans-button">Open Text Translator</button>
+  <div class="beta-container">
+    <span class="beta-label">Beta</span>
+    <div class="beta-line"></div>
+  </div>
+  <form>
+    <label for="length">Number of characters:</label>
+    <input type="number" id="length" min="8" max="64" value="8">
+    <br>
+    <input type="checkbox" id="uppercase">
+    <label for="uppercase">Include uppercase letters</label>
+    <br>
+    <input type="checkbox" id="numbers">
+    <label for="numbers">Include numbers</label>
+    <br>
+    <input type="checkbox" id="special">
+    <label for="special">Include special characters</label>
+    <br><br>
+    <button type="button" onclick="generate()">Generate Password</button>
+    <br><br>
+    <label for="password">Password:</label>
+    <input type="text" id="password" disabled>
+  </form>
+  <script>
+    function generate() {
+      var length = document.getElementById("length").value;
+      var includeUppercase = document.getElementById("uppercase").checked;
+      var includeNumbers = document.getElementById("numbers").checked;
+      var includeSpecial = document.getElementById("special").checked;
+      
+      var password = "";
+      var characters = "abcdefghijklmnopqrstuvwxyz";
+      
+      if (includeUppercase) {
+        characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      }
+      if (includeNumbers) {
+        characters += "0123456789";
+      }
+      if (includeSpecial) {
+        characters += "!@#$%^&*()_+-=[]{}|;':\"<>,.?/\\";
+      }
+      
+      for (var i = 0; i < length; i++) {
+        password += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      
+      document.getElementById("password").value = password;
+    }
+  </script>
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <script>
+      function checkCookie() {
+        var login = getCookie("isLoggedIn");
+        if (login != "") {
+          document.getElementById("loginText").innerHTML = "Welcome, " + login+"!";
+          document.getElementById("logoutButton").style.display = "block";
+        } else {
+          document.getElementById("loginButton").style.display = "block";
+          document.getElementById("SignUpButton").style.display = "block";
+        }
+      }
+      function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+      function logout() {
+        document.cookie = "isLoggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.location = ("index.html");
+      }
+    </script>
+  </head>
+  <body onload="checkCookie()">
+    <div id="loginText"></div>
+    <button id="logoutButton" style="display:none" onclick="logout()">Logout</button>
+    <button id="loginButton" style="display:none" onclick="document.location=('account/login.html')">Login In</button>
+    <button id="SignUpButton" style="display:none" onclick="document.location=('account/signup.html')">Sign Up</button>
+    <button onclick="document.location=('txtgen.html')" id="txt-button">Open txt file generator</button>
+  </body>
+  </html>  
+</body>
+</html>

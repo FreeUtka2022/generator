@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <title>Txt file generator</title>
+  <link rel="icon" type="/icon.png">
+<h1>Txt file generator</h1>
+<button onclick="document.location=('index.html')" id="index-button">Back to Password Generator</button>
+
+<style>
+        body {
+      background-color: #282c34;
+      color: white;
+    }
+    form {
+      margin: 0 auto;
+      width: 50%;
+    }
+    textarea {
+      background-color: #44475a;
+      color: white;
+      border: none;
+      padding: 8px;
+      width: 100%;
+    }
+    button {
+      background-color: #6272a4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    #fileName {
+      background-color: #44475a;
+      color: white;
+      border: none;
+      padding: 8px;
+      width: 100%;
+    }
+
+    #index-button {
+      position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #6272a4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+}
+</style>
+
+<form>
+  <label for="fileName">File Name:</label>
+  <input type="text" id="fileName" name="fileName">
+  <br>
+  <label for="fileContent">File Content:</label>
+  <textarea id="fileContent" name="fileContent"></textarea>
+  <br><br>
+  <button onclick="downloadFile()">Download File</button>
+</form> 
+<script>
+  function downloadFile() {
+    var fileName = document.getElementById("fileName").value;
+    var fileContent = document.getElementById("fileContent").value;
+    var blob = new Blob([fileContent], { type: "text/plain" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = fileName + ".txt";
+    a.click();
+  }
+</script>
+</body>
+</html>

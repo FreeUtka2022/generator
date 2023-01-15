@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Raw Text Generator</title>
+  <link rel="icon" type="/icon.png">
+  <style>
+    /* Some basic styling */
+    body {
+      background-color: #282c34;
+      color: white;
+    }
+    form {
+      margin: 0 auto;
+      width: 50%;
+    }
+    textarea {
+      background-color: #44475a;
+      color: white;
+      border: none;
+      padding: 8px;
+      width: 100%;
+    }
+    button {
+      background-color: #6272a4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    #index-button {
+      position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #6272a4;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+}
+  </style>
+</head>
+<body>
+  <h1>Raw Text Generator</h1>
+  <button onclick="document.location=('index.html')" id="index-button">Back to Password Generator</button>
+  <form>
+    <textarea id="input-text"></textarea>
+    <br><br>
+    <button type="button" onclick="generatePage()">Generate Page</button>
+  </form>
+  <script>
+    function generatePage() {
+      var inputText = document.getElementById("input-text").value;
+      var newWindow = window.open();
+      newWindow.document.write("<pre>" + inputText + "</pre>");
+    }
+  </script>
+</body>
+</html>
